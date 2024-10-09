@@ -6,9 +6,11 @@ import Button from "../Button/Button";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { auth } from "../../firebase";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function LoginForm() {
-  const [modalState, setModalState] = useState(true);
+  const [modalState, setModalState] = useState(false);
   const [hidePwd, setHidePwd] = useState(false);
   const modalClose = () => {
     setModalState(false);
@@ -20,13 +22,20 @@ export default function LoginForm() {
     return setHidePwd(true);
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async ({ email, password }) => {
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      if (error.code === "auth/invalid-credential") {
+        return toast.error("Wrong password or email!");
+      }
+      return toast.error("Something went wrong! Please try again later");
+    }
   };
 
   const schema = yup
     .object({
-      email: yup.string().email().required(),
+      email: yup.string().email("Must be a valid email").required(),
       password: yup.string().required(),
     })
     .required();
@@ -43,6 +52,7 @@ export default function LoginForm() {
     <Modal open={modalState} onClose={modalClose} closeAfterTransition>
       <Fade in={modalState} timeout={150}>
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+          <Toaster position="top-center" />
           <button
             className={css.closeButton}
             type="button"
@@ -59,28 +69,32 @@ export default function LoginForm() {
               and continue your search for an teacher.
             </p>
           </div>
-          <div className={css.inputContainer}>
-            <input
-              className={css.input}
-              placeholder="Email"
-              {...register("email")}
-            />
-            {errors.email && <p className={css.errorMessage}>Required!</p>}
-          </div>
-          <div className={css.inputContainer}>
-            <input
-              className={css.input}
-              placeholder="Password"
-              type={`${hidePwd ? "text" : "password"}`}
-              {...register("password")}
-            />
-            <svg className={css.eyeIcon} onClick={pwdVisibilityToggle}>
-              <use
-                href={hidePwd ? `${icons}#icon-eye` : `${icons}#icon-eye-off`}
+          <ul className={css.inputList}>
+            <li className={css.inputItem}>
+              <input
+                className={css.input}
+                placeholder="Email"
+                {...register("email")}
               />
-            </svg>
-            {errors.password && <p className={css.errorMessage}>Required!</p>}
-          </div>
+              {errors.email && (
+                <p className={css.errorMessage}>{errors.email.message}!</p>
+              )}
+            </li>
+            <li className={css.inputItem}>
+              <input
+                className={css.input}
+                placeholder="Password"
+                type={`${hidePwd ? "text" : "password"}`}
+                {...register("password")}
+              />
+              <svg className={css.eyeIcon} onClick={pwdVisibilityToggle}>
+                <use
+                  href={hidePwd ? `${icons}#icon-eye` : `${icons}#icon-eye-off`}
+                />
+              </svg>
+              {errors.password && <p className={css.errorMessage}>Required!</p>}
+            </li>
+          </ul>
           <Button text="Log In" type="submit" />
         </form>
       </Fade>

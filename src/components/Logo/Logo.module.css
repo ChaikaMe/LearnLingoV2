@@ -1,0 +1,17 @@
+.link {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: var(--main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+}
