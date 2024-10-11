@@ -9,9 +9,9 @@ import { useForm } from "react-hook-form";
 import { auth } from "../../firebase";
 import toast, { Toaster } from "react-hot-toast";
 
-export default function RegisterForm() {
-  const [modalState, setModalState] = useState(false);
+export default function RegisterForm({ modalState, setModalState }) {
   const [hidePwd, setHidePwd] = useState(false);
+
   const modalClose = () => {
     setModalState(false);
   };
@@ -31,6 +31,7 @@ export default function RegisterForm() {
       await userCredential.user.updateProfile({
         displayName: name,
       });
+      setModalState(false);
     } catch (e) {
       if (e.code === "auth/email-already-in-use") {
         return toast.error("This email is already in use!");

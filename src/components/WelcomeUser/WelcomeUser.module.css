@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 255px;
+}
+
+.letter {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--main);
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.button {
+  border: transparent;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 4px;
+  padding: 0;
+  transition: scale var(--animation);
+}
+
+.button:hover {
+  scale: 1.1;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}

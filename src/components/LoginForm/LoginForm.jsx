@@ -9,8 +9,7 @@ import { useForm } from "react-hook-form";
 import { auth } from "../../firebase";
 import toast, { Toaster } from "react-hot-toast";
 
-export default function LoginForm() {
-  const [modalState, setModalState] = useState(false);
+export default function LoginForm({ modalState, setModalState }) {
   const [hidePwd, setHidePwd] = useState(false);
   const modalClose = () => {
     setModalState(false);
@@ -25,6 +24,7 @@ export default function LoginForm() {
   const onSubmit = async ({ email, password }) => {
     try {
       await auth.signInWithEmailAndPassword(email, password);
+      setModalState(false);
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
         return toast.error("Wrong password or email!");
