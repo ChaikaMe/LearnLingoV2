@@ -4,15 +4,9 @@
   line-height: 156%;
   color: #121417;
   border-radius: 12px;
-  padding: 16px 88px;
   width: 100%;
   height: 100%;
   border: transparent;
   cursor: pointer;
-  background-color: var(--button);
   transition: background-color var(--animation);
-}
-
-.button:hover {
-  background-color: var(--buttonHover);
 }

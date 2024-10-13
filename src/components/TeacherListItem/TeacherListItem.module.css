@@ -1,0 +1,37 @@
+.imageContainer {
+  min-width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  border-radius: 50%;
+  width: 96px;
+  height: 96px;
+}
+
+.onlineIcon {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 19px;
+  right: 23px;
+}
+
+.teacherData {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 968px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

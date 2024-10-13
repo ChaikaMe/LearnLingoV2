@@ -11,7 +11,7 @@ export default function Navigation({ isLoggedIn }) {
         Teachers
       </NavLink>
       {isLoggedIn ? (
-        <NavLink className={css.link} to="/favourites">
+        <NavLink className={css.link} to="/favourite">
           Favourite
         </NavLink>
       ) : (

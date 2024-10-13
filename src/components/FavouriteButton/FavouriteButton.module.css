@@ -1,0 +1,15 @@
+.favouriteButton {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+}
+
+.heartIcon {
+  width: 26px;
+  height: 26px;
+  fill: transparent;
+  stroke: var(--main);
+}

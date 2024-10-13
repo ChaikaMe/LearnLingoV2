@@ -12,7 +12,7 @@ export default function Auth({ setModalLogState, setModalRegState }) {
         type="button"
         onClick={() => setModalLogState(true)}
       >
-        <svg className={css.icon} style={{ stroke: theme }}>
+        <svg className={css.icon} style={{ stroke: theme.standart }}>
           <use href={`${icons}#icon-log-in`} />
         </svg>
         Log In

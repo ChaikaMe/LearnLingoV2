@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { auth } from "../../firebase";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function LoginForm({ modalState, setModalState }) {
   const [hidePwd, setHidePwd] = useState(false);
@@ -25,6 +25,10 @@ export default function LoginForm({ modalState, setModalState }) {
     try {
       await auth.signInWithEmailAndPassword(email, password);
       setModalState(false);
+      reset({
+        email: "",
+        password: "",
+      });
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
         return toast.error("Wrong password or email!");
@@ -43,6 +47,7 @@ export default function LoginForm({ modalState, setModalState }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -52,7 +57,6 @@ export default function LoginForm({ modalState, setModalState }) {
     <Modal open={modalState} onClose={modalClose} closeAfterTransition>
       <Fade in={modalState} timeout={150}>
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          <Toaster position="top-center" />
           <button
             className={css.closeButton}
             type="button"

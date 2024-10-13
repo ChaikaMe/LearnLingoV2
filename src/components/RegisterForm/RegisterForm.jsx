@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { auth } from "../../firebase";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function RegisterForm({ modalState, setModalState }) {
   const [hidePwd, setHidePwd] = useState(false);
@@ -32,6 +32,11 @@ export default function RegisterForm({ modalState, setModalState }) {
         displayName: name,
       });
       setModalState(false);
+      reset({
+        email: "",
+        password: "",
+        name: "",
+      });
     } catch (e) {
       if (e.code === "auth/email-already-in-use") {
         return toast.error("This email is already in use!");
@@ -54,6 +59,7 @@ export default function RegisterForm({ modalState, setModalState }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -63,7 +69,6 @@ export default function RegisterForm({ modalState, setModalState }) {
     <Modal open={modalState} onClose={modalClose} closeAfterTransition>
       <Fade in={modalState} timeout={150}>
         <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          <Toaster position="top-center" />
           <button
             className={css.closeButton}
             type="button"

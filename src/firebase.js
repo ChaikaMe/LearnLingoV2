@@ -1,4 +1,5 @@
 import firebase from "firebase/compat/app";
+import "firebase/compat/database";
 import "firebase/compat/auth";
 
 const app = firebase.initializeApp({
@@ -8,8 +9,10 @@ const app = firebase.initializeApp({
   storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_APP_ID,
+  databaseURL: import.meta.env.VITE_DATABASE_URL,
 });
 
 export const auth = app.auth();
+export const db = app.database();
 
 export default app;

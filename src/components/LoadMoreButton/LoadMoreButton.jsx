@@ -1,29 +1,28 @@
-import { useSelector } from "react-redux";
-import css from "./Button.module.css";
-import { selectTheme } from "../../redux/helper/selectors";
 import { useState } from "react";
+import css from "./LoadMoreButton.module.css";
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../redux/helper/selectors";
 
-export default function Button({ text, type, onClick, width, height }) {
-  const theme = useSelector(selectTheme);
+export default function LoadMoreButton({ handleClick }) {
   const [buttonHover, setButtonHover] = useState(false);
+  const theme = useSelector(selectTheme);
   return (
     <button
+      className={css.button}
+      onClick={() => {
+        handleClick();
+      }}
       onMouseEnter={() => {
         setButtonHover(true);
       }}
       onMouseLeave={() => {
         setButtonHover(false);
       }}
-      className={css.button}
-      type={type}
-      onClick={onClick}
       style={{
         backgroundColor: buttonHover ? theme.bright : theme.standart,
-        width: width,
-        height: height,
       }}
     >
-      {text}
+      Load more
     </button>
   );
 }

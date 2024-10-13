@@ -1,0 +1,26 @@
+.container {
+  padding: 96px 0;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 1184px;
+}
+
+.item {
+  max-height: 1184px;
+  padding: 24px;
+  display: flex;
+  gap: 48px;
+  border-radius: 24px;
+  background-color: #fff;
+}

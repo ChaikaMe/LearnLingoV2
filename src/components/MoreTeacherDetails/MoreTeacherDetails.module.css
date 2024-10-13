@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.moreButton {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  border: transparent;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.review {
+  height: 84px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.photoAndNameContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.reviewPhoto {
+  height: 44px;
+  width: 44px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+}
+
+.rating {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  display: flex;
+  align-items: center;
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.nameAndRatingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reviewText {
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}

@@ -19,7 +19,7 @@ export default function WelcomeUser() {
     <div className={css.container}>
       <p className={css.letter}>Welcome, {auth.currentUser.displayName}!</p>
       <button className={css.button} type="button" onClick={logOut}>
-        <svg className={css.icon} style={{ stroke: theme }}>
+        <svg className={css.icon} style={{ stroke: theme.standart }}>
           <use href={`${icons}#icon-log-in`} />
         </svg>
       </button>

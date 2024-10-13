@@ -3,8 +3,6 @@
 :root {
   --main: #121417;
   --subMain: rgba(18, 20, 23, 0.8);
-  --button: #f4c550;
-  --buttonHover: #fbe9ba;
   --animation: 150ms ease-in;
 }
 

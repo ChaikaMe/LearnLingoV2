@@ -1,0 +1,65 @@
+.itemTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.teacherName {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.teacherNameSpan {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+}
+
+.lessonsDataContainer {
+  display: flex;
+  gap: 64px;
+}
+
+.lessonsData {
+  display: flex;
+  gap: 32px;
+}
+
+.lessonsSpan {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: relative;
+}
+
+.bookIcon {
+  height: 16px;
+  width: 16px;
+  fill: transparent;
+}
+
+.lessonsSpan::after {
+  content: "";
+  width: 1px;
+  height: 16px;
+  right: -16px;
+  position: absolute;
+  background-color: rgba(18, 20, 23, 0.2);
+}
+
+.lessonsSpan:last-child::after {
+  background-color: transparent;
+}
+
+.starIcon {
+  height: 16px;
+  width: 16px;
+}
