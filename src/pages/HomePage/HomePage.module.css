@@ -1,0 +1,6 @@
+.container {
+  padding: 0 clamp(12px, 1vw + 1em, 64px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}

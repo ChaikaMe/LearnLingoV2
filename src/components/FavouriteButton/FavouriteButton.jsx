@@ -26,6 +26,8 @@ export default function FavouriteButton({ icons, theme, id }) {
           setFavToggle(true);
         }
       });
+    } else {
+      setFavToggle(false);
     }
   }, [id, user]);
 

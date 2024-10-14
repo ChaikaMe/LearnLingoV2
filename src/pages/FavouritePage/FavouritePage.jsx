@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import css from "./FavouritePage.module.css";
 import { auth, db } from "../../firebase";
 import TeacherListItem from "../../components/TeacherListItem/TeacherListItem";
@@ -6,11 +6,36 @@ import LoadMoreButton from "../../components/LoadMoreButton/LoadMoreButton";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../redux/helper/selectors";
+import Filters from "../../components/Filters/Filters";
 
 export default function FavouritePage() {
+  const theme = useSelector(selectTheme);
+
   const [teachers, setTeachers] = useState([]);
   const [number, setNumber] = useState(4);
-  const theme = useSelector(selectTheme);
+  const favIds = useRef([]);
+  const filteredId = useRef([]);
+
+  const [language, setLanguage] = useState("");
+  const [level, setLevel] = useState("");
+  const [price, setPrice] = useState("");
+  const filters = { language, setLanguage, level, setLevel, price, setPrice };
+
+  const filteredTeachers = teachers.filter((teacher, index) => {
+    const filteredLanguage =
+      language === "" ? true : teacher.languages.includes(language);
+    const filteredLevel = level === "" ? true : teacher.levels.includes(level);
+    const filteredPrice = price === "" ? true : teacher.price_per_hour <= price;
+
+    if (filteredLanguage && filteredLevel && filteredPrice) {
+      filteredId.current.includes(index) ? "" : filteredId.current.push(index);
+    } else {
+      filteredId.current = filteredId.current.includes(index)
+        ? filteredId.current.filter((item) => item !== index)
+        : filteredId.current;
+    }
+    return filteredLanguage && filteredLevel && filteredPrice;
+  });
 
   const handleClick = () => {
     const tempNum = number + 4;
@@ -26,8 +51,8 @@ export default function FavouritePage() {
         if (data) {
           const favouritesRef = db.ref(`users/${user.uid}`);
           favouritesRef.once("value", (snapshot) => {
-            const favouritesIds = snapshot.val() || [];
-            const newArray = favouritesIds.map((id) => data[id]);
+            favIds.current = snapshot.val() || [];
+            const newArray = favIds.current.map((id) => data[id]);
             setTeachers(newArray);
           });
         }
@@ -39,11 +64,13 @@ export default function FavouritePage() {
 
   useEffect(() => {
     setNumber(4);
-  }, [teachers]);
+  }, [teachers, language, price, level]);
 
   return (
     <section className={css.container}>
-      <div></div>
+      <div className={css.filters}>
+        <Filters filters={filters} />
+      </div>
       <ul className={css.list}>
         {teachers.length === 0 ? (
           <h1 className={css.title}>
@@ -59,10 +86,13 @@ export default function FavouritePage() {
           </h1>
         ) : (
           <>
-            {teachers.slice(0, number).map((teacher, index) => {
+            {filteredTeachers.slice(0, number).map((teacher, index) => {
               return (
                 <li className={css.item} key={index}>
-                  <TeacherListItem teacher={teacher} id={index} />
+                  <TeacherListItem
+                    teacher={teacher}
+                    id={favIds.current[index]}
+                  />
                 </li>
               );
             })}

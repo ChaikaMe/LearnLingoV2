@@ -6,6 +6,7 @@
 
 .teacherName {
   font-weight: 500;
+  width: 260px;
   font-size: 24px;
   line-height: 100%;
   display: flex;
@@ -22,12 +23,15 @@
 
 .lessonsDataContainer {
   display: flex;
-  gap: 64px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .lessonsData {
   display: flex;
   gap: 32px;
+  flex-wrap: wrap;
+  row-gap: 12px;
 }
 
 .lessonsSpan {

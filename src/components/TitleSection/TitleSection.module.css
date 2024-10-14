@@ -1,9 +1,13 @@
 .container {
-  height: 570px;
+  min-height: 570px;
+  width: 100%;
+  max-width: 1312px;
   display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  align-items: center;
+  justify-content: center;
   gap: 24px;
-  max-width: 1440px;
-  padding: 20px 64px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -13,25 +17,24 @@
   border-radius: 30px;
   width: 100%;
   max-width: 720px;
-  padding: 98px 64px;
+  padding: clamp(32px, 5vw + 2em, 98px) clamp(1px, 1vw + 1em, 64px);
 }
 
 .title {
   margin: 0;
   font-weight: 500;
-  font-size: 48px;
+  font-size: clamp(24px, 3vw + 1em, 48px);
   line-height: 117%;
   letter-spacing: -0.02em;
 }
 
 .titleSpan {
-  width: 195px;
   position: relative;
   border-radius: 8px;
   color: transparent;
-  height: 40px;
+  height: clamp(24px, 1em, 40px);
   display: inline-block;
-  vertical-align: -12px;
+  vertical-align: middle;
 }
 
 .titleSpan::after {
@@ -39,9 +42,9 @@
   color: var(--main);
   display: block;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -56%);
   font-style: italic;
   font-weight: 400;
 }
@@ -50,7 +53,7 @@
   margin: 0;
   margin-top: 32px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: clamp(12px, 1em, 16px);
   line-height: 137%;
   letter-spacing: -0.02em;
   max-width: 471px;
@@ -62,7 +65,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  width: 267px;
+  width: 100%;
+  max-width: 267px;
   height: 60px;
   font-weight: 700;
   font-size: 18px;
@@ -79,6 +83,7 @@
   border-radius: 30px;
   width: 100%;
   max-width: 568px;
+  height: 530px;
   background-image: url(../../img/homePage/homePageSticker.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -89,7 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 360px;
+  width: calc(100% / 1.577);
   height: 178px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
