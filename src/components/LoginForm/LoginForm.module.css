@@ -1,8 +1,11 @@
 .form {
   height: 506px;
   max-width: 565px;
+  width: 100%;
+  min-width: 320px;
   border-radius: 30px;
-  padding: 64px;
+  justify-content: center;
+  padding: clamp(12px, 12px + (0.04643 * (100vw - 320px)), 64px);
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -118,4 +121,9 @@
   font-size: 12px;
   left: 16px;
   top: -16px;
+}
+
+.button {
+  height: 100%;
+  max-height: 64px;
 }

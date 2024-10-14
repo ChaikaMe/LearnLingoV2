@@ -1,9 +1,12 @@
 .form {
   max-width: 600px;
-  height: 972px;
+  min-height: 972px;
+  width: 100%;
+  min-width: 320px;
+  justify-content: center;
   background-color: #fff;
   border-radius: 30px;
-  padding: 64px;
+  padding: clamp(12px, 12px + (0.04643 * (100vw - 320px)), 64px);
   position: relative;
   position: absolute;
   top: 50%;
@@ -144,4 +147,8 @@
   font-size: 12px;
   left: 16px;
   top: -16px;
+}
+
+.button {
+  height: 64px;
 }

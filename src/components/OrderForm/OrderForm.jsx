@@ -153,7 +153,9 @@ export default function OrderForm({ teacher, modalState, setModalState }) {
               )}
             </div>
           </div>
-          <Button text={"Book"} type={"submit"} />
+          <div className={css.button}>
+            <Button text={"Book"} type={"submit"} />
+          </div>
         </form>
       </Fade>
     </Modal>

@@ -99,7 +99,9 @@ export default function LoginForm({ modalState, setModalState }) {
               {errors.password && <p className={css.errorMessage}>Required!</p>}
             </li>
           </ul>
-          <Button text="Log In" type="submit" />
+          <div className={css.button}>
+            <Button text="Log In" type="submit" />
+          </div>
         </form>
       </Fade>
     </Modal>

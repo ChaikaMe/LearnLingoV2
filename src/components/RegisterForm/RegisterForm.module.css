@@ -1,8 +1,10 @@
 .form {
   height: 600px;
   max-width: 565px;
+  width: 100%;
+  min-width: 320px;
   border-radius: 30px;
-  padding: 64px;
+  padding: clamp(12px, 12px + (0.04643 * (100vw - 320px)), 64px);
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -12,6 +14,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   outline: transparent;
+  justify-content: center;
 }
 
 .closeButton {
@@ -65,7 +68,7 @@
   padding: 16px;
   display: flex;
   align-items: center;
-  width: 438px;
+  width: 100%;
   height: 54px;
   font-weight: 400;
   font-size: 16px;
@@ -85,12 +88,15 @@
 
 .inputList {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 18px;
 }
 
 .inputItem {
   position: relative;
+  width: 100%;
+  max-width: 438px;
 }
 
 .input::placeholder {
@@ -118,4 +124,13 @@
   font-size: 12px;
   left: 16px;
   top: -16px;
+}
+
+.button {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  max-height: 64px;
+  max-width: 438px;
 }

@@ -123,6 +123,7 @@ export default function RegisterForm({ modalState, setModalState }) {
               {errors.password && <p className={css.errorMessage}>Required!</p>}
             </li>
           </ul>
+          <div className={css.button}></div>
           <Button text="Sign Up" type="submit" />
         </form>
       </Fade>

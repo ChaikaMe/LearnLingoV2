@@ -25,7 +25,6 @@
 }
 
 .item {
-  max-height: 1184px;
   padding: 24px;
   display: flex;
   flex-wrap: wrap;

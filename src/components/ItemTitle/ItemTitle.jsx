@@ -30,7 +30,9 @@ export default function ItemTitle({ teacher, icons, theme, id }) {
             <span style={{ color: "#38cd3e" }}>{teacher.price_per_hour}$</span>
           </span>
         </div>
-        <FavouriteButton icons={icons} theme={theme} id={id} />
+        <div className={css.favbutton}>
+          <FavouriteButton icons={icons} theme={theme} id={id} />
+        </div>
       </div>
     </div>
   );

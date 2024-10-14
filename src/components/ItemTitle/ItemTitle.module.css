@@ -67,3 +67,9 @@
   height: 16px;
   width: 16px;
 }
+
+.favbutton {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}

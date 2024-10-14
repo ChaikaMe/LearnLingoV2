@@ -1,5 +1,5 @@
 .container {
-  padding: 20px 0 96px;
+  padding: 20px 12px 96px;
   background: #f8f8f8;
   display: flex;
   flex-direction: column;
@@ -25,13 +25,13 @@
 }
 
 .item {
-  max-height: 1184px;
   padding: 24px;
   display: flex;
+  flex-wrap: wrap;
   gap: 48px;
   border-radius: 24px;
   background-color: #fff;
-  transition: max-height var(--animation);
+  position: relative;
 }
 
 .title {
